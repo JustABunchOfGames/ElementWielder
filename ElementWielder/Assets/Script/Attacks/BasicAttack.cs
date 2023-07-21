@@ -7,7 +7,7 @@ namespace Attacks
         [SerializeField] private GameObject _castPoint;
         [SerializeField] private GameObject _basicAttackPrefab;
 
-        [SerializeField] private float _speed;
+        // [SerializeField] private float _speed;
 
         [SerializeField] private float _cooldown;
         private float _cooldownTimer = 0;
@@ -21,7 +21,7 @@ namespace Attacks
 
                 GameObject attack = Instantiate(_basicAttackPrefab, _castPoint.transform.position, _castPoint.transform.rotation);
 
-                attack.GetComponent<Rigidbody2D>().velocity = _castPoint.transform.right * _speed;
+                // attack.GetComponent<Rigidbody2D>().velocity = _castPoint.transform.right * _speed;
             }
 
             if (!_canCast)
