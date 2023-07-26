@@ -140,3 +140,4 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 1462004242623664267}
   _hp: 2
   _mana: 10
+  _enemyEvents: {fileID: 11400000, guid: 3f451b890d05df947b984800915d913d, type: 2}

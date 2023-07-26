@@ -1,25 +1,26 @@
 using Core;
-using UI;
 using UnityEngine;
 
 namespace Player
 {
     public class PlayerData : MonoBehaviour
     {
-        [SerializeField] private int _hp;
 
-        [Header("Mana")]
-        [SerializeField] private ManaUI _manaUI;
+        [SerializeField] private int _hp;
         private PlayerMana _mana;
+
+        private void Awake()
+        {
+            _mana = new PlayerMana();
+        }
 
         private void Start()
         {
-            _mana = new PlayerMana(_manaUI);
+            _mana.InitMana();
         }
 
         public void ReceiveMana(ElementType type, int value)
         {
-            Debug.Log("ReceiveMana :" + value);
             _mana.AddMana(type, value);
         }
     }

@@ -20,8 +20,6 @@ namespace Attacks
                 _canCast = false;
 
                 GameObject attack = Instantiate(_basicAttackPrefab, _castPoint.transform.position, _castPoint.transform.rotation);
-
-                // attack.GetComponent<Rigidbody2D>().velocity = _castPoint.transform.right * _speed;
             }
 
             if (!_canCast)

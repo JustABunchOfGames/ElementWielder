@@ -1,4 +1,5 @@
 using Core;
+using Player;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,11 +20,12 @@ namespace UI
             {
                 _elementUI.Add(_elementTypes[i], _elementGauges[i]);
             }
+
+            PlayerMana.manaChanged.AddListener(UpdateManaUI);
         }
 
         public void UpdateManaUI(ElementType type, int value, int maxValue)
         {
-            Debug.Log("UpdateManaUI " + value + "/" + maxValue);
             _elementUI[type].UpdateValue(value, maxValue);
         }
     }

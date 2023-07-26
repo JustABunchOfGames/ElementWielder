@@ -1,57 +1,92 @@
-
 using Core;
 using System;
 using System.Collections.Generic;
-using UI;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Player
 {
     public class PlayerMana
     {
-        Dictionary<ElementType, int> _mana;
+        public class ManaValue
+        {
+            public int maxMana { get; private set; }
+
+            public int currentMana { get; private set; }
+
+            public ManaValue(int maxMana)
+            {
+                this.maxMana = maxMana;
+            }
+
+            public void AddMana(int value)
+            {
+                if (currentMana + value > maxMana)
+                    currentMana = maxMana;
+                else
+                    currentMana += value;
+            }
+
+            public bool UseMana(int value)
+            {
+                if (currentMana - value < 0)
+                    return false;
+
+                currentMana -= value;
+                return true;
+            }
+        }
+
+        Dictionary<ElementType, ManaValue> _mana;
 
         private int _maxMana = 100;
 
-        private ManaUI _manaUI;
+        public static ManaChangedEvent manaChanged;
 
-        public PlayerMana(ManaUI ui)
+        public PlayerMana()
         {
-            _manaUI = ui;
+            manaChanged = new ManaChangedEvent();
 
-            _mana = new Dictionary<ElementType, int>();
+            _mana = new Dictionary<ElementType, ManaValue>();
+        }
 
-            foreach(ElementType type in Enum.GetValues(typeof(ElementType)))
+        public void InitMana()
+        {
+            foreach (ElementType type in Enum.GetValues(typeof(ElementType)))
             {
-                _mana.Add(type, 0);
-                _manaUI.UpdateManaUI(type, _mana[type], _maxMana);
+                _mana.Add(type, new ManaValue(_maxMana));
+
+                InvokeManaEvent(type);
             }
         }
 
         public bool UseMana(ElementType type, int value)
         {
-            if (_mana[type] < value)
-                return false;
+            bool manaUsed = _mana[type].UseMana(value);
 
-            _mana[type] -= value;
+            if (manaUsed)
+                InvokeManaEvent(type);
 
-            _manaUI.UpdateManaUI(type, _mana[type], _maxMana);
-
-            return true;
+            return manaUsed;
         }
 
         public void AddMana(ElementType type, int value)
         {
-            _mana[type] += value;
+            _mana[type].AddMana(value);
 
-            if (_mana[type] > _maxMana)
-            {
-                _mana[type] = _maxMana;
-            }
-
-            Debug.Log("AddMana : " + value);
-
-            _manaUI.UpdateManaUI(type, _mana[type], _maxMana);
+            InvokeManaEvent(type);
         }
+
+        private void InvokeManaEvent(ElementType type)
+        {
+            if (manaChanged == null)
+                return;
+
+            ManaValue manaValue = _mana[type];
+            manaChanged.Invoke(type, manaValue.currentMana, manaValue.maxMana);
+        }
+
+        [System.Serializable]
+        public class ManaChangedEvent : UnityEvent<ElementType, int, int> { }
     }
 }

@@ -25,7 +25,7 @@ namespace Attacks
 
             if (enemy != null)
             {
-                enemy.Damage(_elementType, _damage);
+                enemy.GetDamaged(_elementType, _damage);
             }
 
             StopCoroutine(DestroyAfterTime());
