@@ -6,6 +6,7 @@ namespace Core
         Fire,
         Wind,
         Earth,
-        Water
+        Water,
+        None
     }
 }

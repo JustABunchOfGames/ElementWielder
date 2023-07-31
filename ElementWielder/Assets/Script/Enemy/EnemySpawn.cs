@@ -9,16 +9,10 @@ namespace Enemy {
         [SerializeField] private EnemyData _enemyPrefab;
 
         [Header("Infos to init enemies")]
-        [SerializeField] private ElementTypeScriptable _elementTypeScriptable;
         [SerializeField] private PlayerData _player;
 
         [Header("Position to Spawn")]
         [SerializeField] private Vector3 _spawnPosition;
-
-        private void Awake()
-        {
-            _elementTypeScriptable.Init();
-        }
 
         private void Update()
         {
@@ -34,7 +28,7 @@ namespace Enemy {
         {
             ElementType element = (ElementType)Random.Range(0, 4);
 
-            enemy.SetData(element, _elementTypeScriptable.GetMaterialByElement(element), _player);
+            enemy.SetData(element, _player);
         }
     }
 }

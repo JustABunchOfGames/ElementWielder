@@ -5,23 +5,22 @@ namespace Player
 {
     public class PlayerData : MonoBehaviour
     {
+        [SerializeField] private int _maxHealth;
+        public PlayerHealth health { get; private set; }
 
-        [SerializeField] private int _hp;
-        private PlayerMana _mana;
+        [SerializeField] private int _maxMana;
+        public PlayerMana mana { get; private set; }
 
         private void Awake()
         {
-            _mana = new PlayerMana();
+            health = new PlayerHealth(_maxHealth);
+            mana = new PlayerMana(_maxMana);
         }
 
         private void Start()
         {
-            _mana.InitMana();
-        }
-
-        public void ReceiveMana(ElementType type, int value)
-        {
-            _mana.AddMana(type, value);
+            mana.Init();
+            health.Init();
         }
     }
 }

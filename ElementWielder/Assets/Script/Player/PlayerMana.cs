@@ -37,20 +37,20 @@ namespace Player
             }
         }
 
+        private int _maxMana;
+
         Dictionary<ElementType, ManaValue> _mana;
 
-        private int _maxMana = 100;
+        public static ManaChangedEvent manaChanged = new ManaChangedEvent();
 
-        public static ManaChangedEvent manaChanged;
-
-        public PlayerMana()
+        public PlayerMana(int maxMana)
         {
-            manaChanged = new ManaChangedEvent();
+            _maxMana = maxMana;
 
             _mana = new Dictionary<ElementType, ManaValue>();
         }
 
-        public void InitMana()
+        public void Init()
         {
             foreach (ElementType type in Enum.GetValues(typeof(ElementType)))
             {
@@ -86,7 +86,6 @@ namespace Player
             manaChanged.Invoke(type, manaValue.currentMana, manaValue.maxMana);
         }
 
-        [System.Serializable]
         public class ManaChangedEvent : UnityEvent<ElementType, int, int> { }
     }
 }

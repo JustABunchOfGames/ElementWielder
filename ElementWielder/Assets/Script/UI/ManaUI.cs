@@ -26,6 +26,8 @@ namespace UI
 
         public void UpdateManaUI(ElementType type, int value, int maxValue)
         {
+            if (type == ElementType.None) return;
+
             _elementUI[type].UpdateValue(value, maxValue);
         }
     }

@@ -1,41 +1,22 @@
-using Core;
-using Enemy;
-using System.Collections;
 using UnityEngine;
 
 namespace Attacks
 {
-    public class Projectile : MonoBehaviour
+    public class Projectile : AttackForm
     {
         [SerializeField] private float _speed;
 
-        [SerializeField] private int _damage = 2;
-        [SerializeField] private ElementType _elementType;
-
-        private void Awake()
+        private new void Awake()
         {
+            base.Awake();
             GetComponent<Rigidbody2D>().velocity = transform.right * _speed;
-
-            StartCoroutine(DestroyAfterTime());
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private new void OnTriggerEnter2D(Collider2D collision)
         {
-            EnemyData enemy = collision.GetComponent<EnemyData>();
-
-            if (enemy != null)
-            {
-                enemy.GetDamaged(_elementType, _damage);
-            }
+            base.OnTriggerEnter2D (collision);
 
             StopCoroutine(DestroyAfterTime());
-            Destroy(gameObject);
-        }
-
-        private IEnumerator DestroyAfterTime()
-        {
-            yield return new WaitForSeconds(3f);
-
             Destroy(gameObject);
         }
     }

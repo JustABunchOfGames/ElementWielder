@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86dfdad7afc341c478fe273ad40bdc34, type: 3}
+  m_Name: CurrentAttacks
+  m_EditorClassIdentifier: 
+  <attackData>k__BackingField:
+  - <attackElement>k__BackingField: 0
+    <attackDamage>k__BackingField: 2
+    <attackPrefab>k__BackingField: {fileID: 8467812246355134681, guid: e1abff8b39f2cbb4ebf8830fc02fae2a, type: 3}
+    <attackCooldown>k__BackingField: 1
+    <attackManaCost>k__BackingField: 2
+  - <attackElement>k__BackingField: 1
+    <attackDamage>k__BackingField: 2
+    <attackPrefab>k__BackingField: {fileID: 3322166885770153169, guid: b5ac657ef33cd9c408f8dbbe459052de, type: 3}
+    <attackCooldown>k__BackingField: 1
+    <attackManaCost>k__BackingField: 2
+  - <attackElement>k__BackingField: 2
+    <attackDamage>k__BackingField: 2
+    <attackPrefab>k__BackingField: {fileID: 8467812246355134681, guid: e1abff8b39f2cbb4ebf8830fc02fae2a, type: 3}
+    <attackCooldown>k__BackingField: 1
+    <attackManaCost>k__BackingField: 2
+  - <attackElement>k__BackingField: 3
+    <attackDamage>k__BackingField: 2
+    <attackPrefab>k__BackingField: {fileID: 8467812246355134681, guid: e1abff8b39f2cbb4ebf8830fc02fae2a, type: 3}
+    <attackCooldown>k__BackingField: 1
+    <attackManaCost>k__BackingField: 2
+  - <attackElement>k__BackingField: 4
+    <attackDamage>k__BackingField: 2
+    <attackPrefab>k__BackingField: {fileID: 8467812246355134681, guid: e1abff8b39f2cbb4ebf8830fc02fae2a, type: 3}
+    <attackCooldown>k__BackingField: 1
+    <attackManaCost>k__BackingField: 0
