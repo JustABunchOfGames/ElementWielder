@@ -6,7 +6,7 @@ namespace Enemy
 {
     public class EnemyData : MonoBehaviour, IDamageable
     {
-        // Enemy Element Type
+        [Header("Element & Material")]
         [SerializeField] private ElementType _elementType;
         [SerializeField] private ElementTypeScriptable _elementTypeScriptable;
         [SerializeField] private SpriteRenderer _spriteRenderer;
@@ -20,14 +20,20 @@ namespace Enemy
         [SerializeField] private int _atk;
         [SerializeField] private float _speed;
 
-        // Events
+        [Header("Scriptable for events")]
         [SerializeField] private EnemyEventScriptable _enemyEvents;
 
-        public void SetData(ElementType elementType, PlayerData player)
+        [Header("Scriptable for stage management")]
+        [SerializeField] private StageManagerScriptable _stageManager;
+
+        public void SetData(ElementType elementType, PlayerData player, int bonusHp, float bonusSpeed)
         {
             // Init Enemy stats / Material
             _elementType = elementType;
             _spriteRenderer.material = _elementTypeScriptable.GetMaterialByElement(_elementType);
+
+            _hp += bonusHp;
+            _speed *= bonusSpeed;
 
             // Save player
             _player = player;
@@ -75,6 +81,11 @@ namespace Enemy
                 target.GetDamaged(_elementType, _atk);
                 Destroy(gameObject);
             }
+        }
+
+        private void OnDestroy()
+        {
+            _stageManager.AddEnemyKilled();
         }
     }
 }

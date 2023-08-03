@@ -6,12 +6,7 @@ namespace Attacks
 {
     public class AttackInputManager : MonoBehaviour
     {
-        public static AttackEvent attackEvent;
-
-        private void Awake()
-        {
-            attackEvent = new AttackEvent();
-        }
+        public static AttackEvent attackEvent = new AttackEvent();
 
         private void Update()
         {

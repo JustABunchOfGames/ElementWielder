@@ -139,8 +139,9 @@ MonoBehaviour:
   _elementType: 0
   _elementTypeScriptable: {fileID: 11400000, guid: d0a1378d95bc6a24ea3e4c48cbf7a6b6, type: 2}
   _spriteRenderer: {fileID: 1462004242623664267}
-  _hp: 2
+  _hp: 1
   _mana: 10
-  _atk: 5
+  _atk: 2
   _speed: 1.5
   _enemyEvents: {fileID: 11400000, guid: 3f451b890d05df947b984800915d913d, type: 2}
+  _stageManager: {fileID: 11400000, guid: f833be26a49659c42a68128d902c53c3, type: 2}
