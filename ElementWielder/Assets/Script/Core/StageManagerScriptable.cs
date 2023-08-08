@@ -8,8 +8,8 @@ namespace Core
     {
         public int stage { get; private set; } = 1;
 
-        [SerializeField] private int _numberOfEnemyToKill;
-        [SerializeField] private int _numberOfEnemyKilled;
+        private int _numberOfEnemyToKill;
+        private int _numberOfEnemyKilled;
 
         public static StageClearedEvent stageClearedEvent = new StageClearedEvent();
 
@@ -30,6 +30,11 @@ namespace Core
         public void NextStage()
         {
             stage++;
+        }
+
+        public void Reset()
+        {
+            stage = 0;
         }
 
         public class StageClearedEvent : UnityEvent { }

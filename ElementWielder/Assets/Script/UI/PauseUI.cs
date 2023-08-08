@@ -24,11 +24,13 @@ namespace UI
 
         public void Restart()
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         public void GoToMainMenu()
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene(0);
         }
 

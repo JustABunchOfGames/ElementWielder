@@ -30,7 +30,7 @@ namespace UI
 
         private void StageFailed()
         {
-            Time.timeScale = (Time.timeScale == 1f) ? 0f : 1f;
+            Time.timeScale = 0f;
 
             if (_playerAim != null)
                 _playerAim.enabled = !_playerAim.enabled;
