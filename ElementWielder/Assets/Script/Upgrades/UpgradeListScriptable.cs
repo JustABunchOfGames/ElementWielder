@@ -1,3 +1,5 @@
+using Core;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +11,24 @@ namespace Upgrades
         // Upgrade that change attacks prefab, usable by all element
         [field :SerializeField] public List<UpgradeSeries> prefabUpgradeList { get; private set; }
 
-        // Upgrade available for all element
-        [field :SerializeField] public List<UpgradeSeries> elementalUpgradeList { get; private set; }
+        // Upgrade by element
+        [field: SerializeField] public List<ElementalUpgradeList> elementalUpgradeList { get; private set; }
 
-        // Unique upgrades or only available on basic attack
-        [field: SerializeField] public List<UpgradeSeries> basicUpgradeList { get; private set; }
+        public List<UpgradeSeries> GetElementalUpgrade(ElementType type)
+        {
+            foreach(ElementalUpgradeList list in elementalUpgradeList)
+            {
+                if (list.type == type)
+                    return list.upgradeList;
+            }
+            return null;
+        }
+
+        [Serializable]
+        public class ElementalUpgradeList
+        {
+            public ElementType type;
+            public List<UpgradeSeries> upgradeList;
+        }
     }
 }

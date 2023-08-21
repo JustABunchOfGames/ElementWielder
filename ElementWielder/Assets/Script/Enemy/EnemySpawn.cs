@@ -20,7 +20,22 @@ namespace Enemy {
         [SerializeField] private float _spawnBaseTimer;
         [SerializeField] private int _baseNumberOfEnemyToSpawn;
 
-        private IEnumerator Start()
+        private void Awake()
+        {
+            StageManagerScriptable.nextStageEvent.AddListener(NewStage);
+        }
+
+        private void NewStage()
+        {
+            StartCoroutine(StartSpawn());
+        }
+
+        private void Start()
+        {
+            StartCoroutine(StartSpawn());
+        }
+
+        private IEnumerator StartSpawn()
         {
             // Getting stage
             int stage = _stageManager.stage;
@@ -56,13 +71,6 @@ namespace Enemy {
             }
 
             yield return null;
-        }
-
-        private void RandomizeEnemy(EnemyData enemy)
-        {
-            
-
-            
         }
     }
 }

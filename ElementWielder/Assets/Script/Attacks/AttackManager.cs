@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Attacks
 {
-    public class DoAttack: MonoBehaviour
+    public class AttackManager: MonoBehaviour
     {
         [Header("Player for mana and CastPoint")]
         [SerializeField] private PlayerData _player;
@@ -14,43 +14,45 @@ namespace Attacks
         [Header("List of Attacks")]
         [SerializeField] private AttackListScriptable _listOfAttacks;
 
-        private Dictionary<ElementType, AttackData> _attacks;
+        public Dictionary<ElementType, AttackData> attacks { get; private set; }
 
-        private Dictionary<ElementType, AttackCooldown> _attacksCooldown;
+        public Dictionary<ElementType, AttackCooldown> attacksCooldowns { get; private set; }
 
         private void Awake()
         {
-            _attacks = new Dictionary<ElementType, AttackData>();
-            _attacksCooldown = new Dictionary<ElementType, AttackCooldown>();
+            attacks = new Dictionary<ElementType, AttackData>();
+            attacksCooldowns = new Dictionary<ElementType, AttackCooldown>();
 
+            // Init with starting attacks
             foreach(AttackData data in _listOfAttacks.attackData)
             {
-                _attacks.Add(data.attackElement, data);
+                AttackData attackData = new AttackData(data);
+                attacks.Add(attackData.attackElement, attackData);
 
-                _attacksCooldown.Add(data.attackElement, new AttackCooldown(data.attackCooldown));
+                attacksCooldowns.Add(attackData.attackElement, new AttackCooldown(attackData.attackCooldown));
             }
         }
 
         private void Start()
         {
-            AttackInputManager.attackEvent.AddListener(CreateAttack);
+            AttackInputManager.attackEvent.AddListener(DoAttack);
         }
 
-        private void CreateAttack(ElementType damageElement)
+        private void DoAttack(ElementType element)
         {
             // Testing cooldown
-            if (!_attacksCooldown[damageElement].canCast)
+            if (!attacksCooldowns[element].canCast)
                 return;
 
             // Testing mana cost
-            if (!_player.mana.UseMana(damageElement, _attacks[damageElement].attackManaCost))
+            if (!_player.mana.UseMana(element, attacks[element].attackManaCost))
                 return;
 
             // reset timer for cooldown
-            _attacksCooldown[damageElement].HasCast();
+            attacksCooldowns[element].HasCast();
 
             // getting data
-            AttackData data = _attacks[damageElement];
+            AttackData data = attacks[element];
 
             // Creating attack
             GameObject attack = Instantiate(data.attackPrefab, _castPoint.transform.position, _castPoint.transform.rotation);
@@ -59,7 +61,7 @@ namespace Attacks
 
         private void Update()
         {
-            foreach(AttackCooldown cooldown in _attacksCooldown.Values)
+            foreach(AttackCooldown cooldown in attacksCooldowns.Values)
             {
                 if (!cooldown.canCast)
                 {
@@ -98,6 +100,11 @@ namespace Attacks
                     timer = 0;
                     canCast = true;
                 }
+            }
+
+            public void ApplyCooldownUpgrade(float percentBonus)
+            {
+                cooldown *= ((100 + percentBonus) / 100);
             }
         }
     }

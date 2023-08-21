@@ -30,7 +30,7 @@ namespace UI
 
             _description.text = "";
 
-            Upgrade upgrade = indexedUpgrade.GetUpgrade();
+            Upgrade upgrade = indexedUpgrade.GetLatestUpgrade();
 
             // Prefab
             if (upgrade.isPrefabUpgrade)
@@ -39,27 +39,75 @@ namespace UI
             }
 
             // Attack
-            if (upgrade.isAttackUpgrade) 
+            if (upgrade.isAttackUpgrade)
             {
-                if (upgrade.attackUpgrade.atkAddBonus > 0)
-                    _description.text += Environment.NewLine + "atk +" + upgrade.attackUpgrade.atkAddBonus;
-
-                if (upgrade.attackUpgrade.atkMultBonus > 0)
+                foreach (AttackUpgrade attackUpgrade in upgrade.attackUpgrades)
                 {
-                    if (upgrade.attackUpgrade.atkMultBonus > 1f)
-                        _description.text += Environment.NewLine + "atk +" + ((1f - upgrade.attackUpgrade.atkMultBonus) * 100) + "%";
-                    else if (upgrade.attackUpgrade.atkMultBonus < 1f)
-                        _description.text += Environment.NewLine + "atk -" + ((1f - upgrade.attackUpgrade.atkMultBonus) * 100) + "%";
+                    if (attackUpgrade.atkAddBonus != 0)
+                        _description.text += Environment.NewLine + attackUpgrade.element.ToString() +
+                            " atk " + (attackUpgrade.atkAddBonus > 0 ? "+" : "") + attackUpgrade.atkAddBonus;
+
+                    if (attackUpgrade.atkPercentMultiplier != 0)
+                        _description.text += Environment.NewLine + attackUpgrade.element.ToString() +
+                            " atk " + (attackUpgrade.atkPercentMultiplier > 0? "+" : "") + attackUpgrade.atkPercentMultiplier + "%";
+                    
                 }
             }
 
             // Cooldown
             if (upgrade.isCooldownUpgrade)
             {
-                if (upgrade.cooldownUpgrade.cooldownMultBonus < 1f)
-                    _description.text += Environment.NewLine + "cooldown -" + ((1f - upgrade.cooldownUpgrade.cooldownMultBonus) * 100) + "%";
-                else if (upgrade.cooldownUpgrade.cooldownMultBonus > 1f)
-                    _description.text += Environment.NewLine + "cooldown +" + ((1f - upgrade.cooldownUpgrade.cooldownMultBonus) * 100) + "%";
+                foreach (CooldownUpgrade cooldownUpgrade in upgrade.cooldownUpgrades)
+                {
+                    _description.text += Environment.NewLine + cooldownUpgrade.element.ToString() +
+                        " cooldown " + (cooldownUpgrade.cooldownPercentBonus > 0 ? "+" : "") + cooldownUpgrade.cooldownPercentBonus + "%";
+                }
+            }
+
+            // ManaCost
+            if (upgrade.isManaCostUpgrade)
+            {
+                foreach(ManaCostUpgrade manaCostUpgrade in upgrade.manaCostUpgrades)
+                {
+                    if (manaCostUpgrade.manaCostBonus != 0)
+                        _description.text += Environment.NewLine + manaCostUpgrade.element.ToString() +
+                            " mana cost " + (manaCostUpgrade.manaCostBonus > 0 ? "+" : "") + manaCostUpgrade.manaCostBonus;
+
+                    if (manaCostUpgrade.manaCostPercentMultiplier != 0)
+                        _description.text += Environment.NewLine + manaCostUpgrade.element.ToString() +
+                            " mana cost " + (manaCostUpgrade.manaCostPercentMultiplier > 0 ? "+" : "") + manaCostUpgrade.manaCostPercentMultiplier + "%";
+                }
+            }
+
+            // Player Health
+            if (upgrade.isHealthUpgrade)
+            {
+                if (upgrade.healthUpgrade.maxHealthBonus != 0)
+                    _description.text += Environment.NewLine +
+                        " health " + (upgrade.healthUpgrade.maxHealthBonus > 0 ? "+" : "") + upgrade.healthUpgrade.maxHealthBonus;
+
+                if (upgrade.healthUpgrade.maxHealthPercentMultiplier != 0)
+                    _description.text += Environment.NewLine +
+                        " health " + (upgrade.healthUpgrade.maxHealthPercentMultiplier > 0 ? "+" : "") + upgrade.healthUpgrade.maxHealthPercentMultiplier + "%";
+            }
+
+            // Player Mana
+            if (upgrade.isManaUpgrade)
+            {
+                foreach (ManaUpgrade manaUpgrade in upgrade.manaUpgrades)
+                {
+                    if (manaUpgrade.maxManaBonus != 0)
+                        _description.text += Environment.NewLine + manaUpgrade.element.ToString() +
+                            " max mana " + (manaUpgrade.maxManaBonus > 0 ? "+" : "") + manaUpgrade.maxManaBonus;
+
+                    if (manaUpgrade.maxManaPercentMultiplier != 0)
+                        _description.text += Environment.NewLine + manaUpgrade.element.ToString() +
+                            " max mana " + (manaUpgrade.maxManaPercentMultiplier > 0 ? "+" : "") + manaUpgrade.maxManaPercentMultiplier + "%";
+
+                    if (manaUpgrade.currentManaPercentMultiplier != 0)
+                        _description.text += Environment.NewLine + manaUpgrade.element.ToString() +
+                            " mana gain " + (manaUpgrade.currentManaPercentMultiplier > 0 ? "+" : "") + manaUpgrade.currentManaPercentMultiplier + "%";
+                }
             }
         }
 

@@ -11,20 +11,33 @@ namespace Player
         public class ManaValue
         {
             public int maxMana { get; private set; }
+            private int _baseMaxMana;
+            private int _maxManaBonus;
+            private float _maxManaPercentMultiplier;
 
             public int currentMana { get; private set; }
+            private float _currentManaPercentMultiplier;
 
             public ManaValue(int maxMana)
             {
                 this.maxMana = maxMana;
+                _baseMaxMana = maxMana;
+                currentMana = 0;
+
+                _maxManaBonus = 0;
+                _maxManaPercentMultiplier = 100f;
+
+                _currentManaPercentMultiplier = 100f;
             }
 
             public void AddMana(int value)
             {
-                if (currentMana + value > maxMana)
+                float mana = value * _currentManaPercentMultiplier / 100f;
+
+                if (currentMana + mana > maxMana)
                     currentMana = maxMana;
                 else
-                    currentMana += value;
+                    currentMana += (int)mana;
             }
 
             public bool UseMana(int value)
@@ -34,6 +47,18 @@ namespace Player
 
                 currentMana -= value;
                 return true;
+            }
+
+            public void AddManaBonus(int maxManaBonus, float maxManaPercentMultiplier, float currentManaPercentMultiplier)
+            {
+                _currentManaPercentMultiplier += currentManaPercentMultiplier;
+
+                _maxManaBonus += maxManaBonus;
+                _maxManaPercentMultiplier += maxManaPercentMultiplier;
+
+
+                float mana = (_baseMaxMana + _maxManaBonus) * _maxManaPercentMultiplier / 100f;
+                maxMana = (int)mana;
             }
         }
 
@@ -52,38 +77,41 @@ namespace Player
 
         public void Init()
         {
-            foreach (ElementType type in Enum.GetValues(typeof(ElementType)))
+            foreach (ElementType element in Enum.GetValues(typeof(ElementType)))
             {
-                _mana.Add(type, new ManaValue(_maxMana));
+                _mana.Add(element, new ManaValue(_maxMana));
 
-                InvokeManaEvent(type);
+                InvokeManaEvent(element);
             }
         }
 
-        public bool UseMana(ElementType type, int value)
+        public bool UseMana(ElementType element, int value)
         {
-            bool manaUsed = _mana[type].UseMana(value);
+            bool manaUsed = _mana[element].UseMana(value);
 
             if (manaUsed)
-                InvokeManaEvent(type);
+                InvokeManaEvent(element);
 
             return manaUsed;
         }
 
-        public void AddMana(ElementType type, int value)
+        public void AddMana(ElementType element, int value)
         {
-            _mana[type].AddMana(value);
+            _mana[element].AddMana(value);
 
-            InvokeManaEvent(type);
+            InvokeManaEvent(element);
         }
 
-        private void InvokeManaEvent(ElementType type)
+        private void InvokeManaEvent(ElementType element)
         {
-            if (manaChanged == null)
-                return;
+            ManaValue manaValue = _mana[element];
+            manaChanged.Invoke(element, manaValue.currentMana, manaValue.maxMana);
+        }
 
-            ManaValue manaValue = _mana[type];
-            manaChanged.Invoke(type, manaValue.currentMana, manaValue.maxMana);
+        public void AddManaBonus(ElementType element, int maxManaBonus, float maxManaPercentMultiplier, float currentManaPercentMultiplier)
+        {
+            _mana[element].AddManaBonus(maxManaBonus, maxManaPercentMultiplier, currentManaPercentMultiplier);
+            InvokeManaEvent(element);
         }
 
         public class ManaChangedEvent : UnityEvent<ElementType, int, int> { }

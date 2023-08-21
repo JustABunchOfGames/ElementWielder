@@ -1,3 +1,4 @@
+using Core;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,10 @@ namespace Upgrades
     [CreateAssetMenu(menuName ="Upgrades/New Series")]
     public class UpgradeSeries : ScriptableObject
     {
+        [Header("Just a reminder, not used in code")]
+        [SerializeField] private ElementType type;
+
+        [Header("Name for UI")]
         [SerializeField] private string _upgradeName;
         public string upgradeName { get { return _upgradeName; } private set { } }
 
@@ -22,6 +27,14 @@ namespace Upgrades
         public int GetMaxIndex()
         {
             return _upgrades.Count - 1;
+        }
+
+        public void PrefabElement(ElementType element)
+        {
+            foreach(Upgrade upgrade in _upgrades)
+            {
+                upgrade.SetElement(element);
+            }
         }
     }
 }

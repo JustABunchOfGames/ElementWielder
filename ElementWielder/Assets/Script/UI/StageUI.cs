@@ -1,6 +1,7 @@
 using Core;
 using Player;
 using UnityEngine;
+using Upgrades;
 
 namespace UI
 {
@@ -13,10 +14,14 @@ namespace UI
         [Header("Player Aim to Pause")]
         [SerializeField] private PlayerAim _playerAim;
 
+        [Header("StageManager")]
+        [SerializeField] private StageManagerScriptable _stageManager;
+
         private void Awake()
         {
             StageManagerScriptable.stageClearedEvent.AddListener(StageCleared);
             PlayerHealth.deathEvent.AddListener(StageFailed);
+            UpgradeManager.upgradeDoneEvent.AddListener(NextStage);
         }
 
         private void StageCleared()
@@ -36,6 +41,13 @@ namespace UI
                 _playerAim.enabled = !_playerAim.enabled;
 
             _stageFailedScreen.SetActive(true);
+        }
+
+        private void NextStage()
+        {
+            _stageManager.NextStage();
+
+            ResetUI();
         }
 
         private void ResetUI()

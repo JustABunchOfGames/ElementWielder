@@ -2,7 +2,9 @@
     "name": "Upgrades",
     "rootNamespace": "",
     "references": [
-        "GUID:dab6f6e679942a644bed59f082bfe39d"
+        "GUID:dab6f6e679942a644bed59f082bfe39d",
+        "GUID:af18f81b3c401f64c9b4a3512453d03a",
+        "GUID:f6fdc12783808784ea21575afcb32222"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

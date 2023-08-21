@@ -11,7 +11,7 @@ namespace Attacks
         private void Update()
         {
             if (Input.GetButton("BasicAttack"))
-                attackEvent.Invoke(ElementType.None);
+                attackEvent.Invoke(ElementType.Basic);
 
             if (Input.GetButton("FireAttack"))
                 attackEvent.Invoke(ElementType.Fire);

@@ -27,7 +27,7 @@ namespace Core {
             float result = 1f;
 
             // it the Element is None, no bonus
-            if (attackElement == ElementType.None || targetElement == ElementType.None)
+            if (attackElement == ElementType.Basic || targetElement == ElementType.Basic)
                 return result;
 
             // if the attack has a bonus on the target, better multiplier

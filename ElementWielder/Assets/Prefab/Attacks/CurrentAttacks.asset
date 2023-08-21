@@ -20,7 +20,7 @@ MonoBehaviour:
     <attackManaCost>k__BackingField: 2
   - <attackElement>k__BackingField: 1
     <attackDamage>k__BackingField: 2
-    <attackPrefab>k__BackingField: {fileID: 3322166885770153169, guid: b5ac657ef33cd9c408f8dbbe459052de, type: 3}
+    <attackPrefab>k__BackingField: {fileID: 8467812246355134681, guid: e1abff8b39f2cbb4ebf8830fc02fae2a, type: 3}
     <attackCooldown>k__BackingField: 1
     <attackManaCost>k__BackingField: 2
   - <attackElement>k__BackingField: 2

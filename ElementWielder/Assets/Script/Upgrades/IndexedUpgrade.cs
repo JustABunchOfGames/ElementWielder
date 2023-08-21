@@ -1,32 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace Upgrades
 {
     public class IndexedUpgrade
     {
         public UpgradeSeries upgradeSeries { get; private set; }
-        private int _index;
+        public int index { get; private set; }
 
         public IndexedUpgrade(UpgradeSeries upgrade)
         {
             this.upgradeSeries = upgrade;
+            index = 0;
         }
 
         public bool isMaxed()
         {
-            return _index == upgradeSeries.GetMaxIndex();
+            return index == upgradeSeries.GetMaxIndex();
         }
 
-        public void AugmentIndex()
+        public void IncrementIndex()
         {
-            _index++;
+            index++;
         }
 
-        public Upgrade GetUpgrade()
+        public Upgrade GetLatestUpgrade()
         {
-            return upgradeSeries.GetUpgrade(_index);
+            return upgradeSeries.GetUpgrade(index);
         }
     }
 }

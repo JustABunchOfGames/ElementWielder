@@ -13,6 +13,8 @@ namespace Core
 
         public static StageClearedEvent stageClearedEvent = new StageClearedEvent();
 
+        public static NextStageEvent nextStageEvent = new NextStageEvent();
+
         public void SetNumberOfEnemyToKill(int value)
         {
             _numberOfEnemyToKill = value;
@@ -30,6 +32,8 @@ namespace Core
         public void NextStage()
         {
             stage++;
+
+            nextStageEvent.Invoke();
         }
 
         public void Reset()
@@ -38,5 +42,7 @@ namespace Core
         }
 
         public class StageClearedEvent : UnityEvent { }
+
+        public class NextStageEvent : UnityEvent { }
     }
 }

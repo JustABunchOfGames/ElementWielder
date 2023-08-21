@@ -570,6 +570,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeList: {fileID: 11400000, guid: 8dc57d4afa0d33247b7c1069007da929, type: 2}
+  _attackManager: {fileID: 1170184862}
+  _player: {fileID: 1349285472}
 --- !u!4 &447928605
 Transform:
   m_ObjectHideFlags: 0
@@ -2761,6 +2763,7 @@ MonoBehaviour:
   _stageClearedScreen: {fileID: 536434200}
   _stageFailedScreen: {fileID: 29934979}
   _playerAim: {fileID: 1349285471}
+  _stageManager: {fileID: 11400000, guid: f833be26a49659c42a68128d902c53c3, type: 2}
 --- !u!1 &1349285469
 GameObject:
   m_ObjectHideFlags: 0

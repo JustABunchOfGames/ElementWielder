@@ -7,6 +7,6 @@ namespace Core
         Wind,
         Earth,
         Water,
-        None
+        Basic
     }
 }
