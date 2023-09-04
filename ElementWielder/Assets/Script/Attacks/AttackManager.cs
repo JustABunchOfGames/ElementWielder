@@ -35,7 +35,7 @@ namespace Attacks
 
         private void Start()
         {
-            AttackInputManager.attackEvent.AddListener(DoAttack);
+            InputManager.attackEvent.AddListener(DoAttack);
         }
 
         private void DoAttack(ElementType element)

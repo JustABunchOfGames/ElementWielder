@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Attacks
 {
-    public class Projectile : AttackForm
+    public class Projectile : AttackShape
     {
         [SerializeField] private float _speed;
 

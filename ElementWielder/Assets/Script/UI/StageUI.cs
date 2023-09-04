@@ -11,8 +11,8 @@ namespace UI
         [SerializeField] private GameObject _stageClearedScreen;
         [SerializeField] private GameObject _stageFailedScreen;
 
-        [Header("Player Aim to Pause")]
-        [SerializeField] private PlayerAim _playerAim;
+        [Header("Stop aiming and attacks")]
+        [SerializeField] private InputManager _inputManager;
 
         [Header("StageManager")]
         [SerializeField] private StageManagerScriptable _stageManager;
@@ -28,7 +28,7 @@ namespace UI
         {
             Time.timeScale = 0f;
 
-            _playerAim.enabled = false;
+            _inputManager.enabled = false;
 
             _stageClearedScreen.SetActive(true);
         }
@@ -37,8 +37,8 @@ namespace UI
         {
             Time.timeScale = 0f;
 
-            if (_playerAim != null)
-                _playerAim.enabled = !_playerAim.enabled;
+            if (_inputManager != null)
+                _inputManager.enabled = !_inputManager.enabled;
 
             _stageFailedScreen.SetActive(true);
         }
@@ -54,7 +54,7 @@ namespace UI
         {
             Time.timeScale = 1f;
 
-            _playerAim.enabled = true;
+            _inputManager.enabled = true;
 
             _stageClearedScreen.SetActive(false);
         }

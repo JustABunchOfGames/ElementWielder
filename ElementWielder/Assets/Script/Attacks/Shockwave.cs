@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Attacks
 {
-    public class Shockwave : AttackForm
+    public class Shockwave : AttackShape
     {
 
         [SerializeField] private float _offset;

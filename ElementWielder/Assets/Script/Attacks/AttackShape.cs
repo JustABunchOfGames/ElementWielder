@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Attacks
 {
-    public class AttackForm : MonoBehaviour
+    public class AttackShape : MonoBehaviour
     {
         [SerializeField] private float _attackTimer;
 
