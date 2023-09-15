@@ -1,7 +1,6 @@
 using Core;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace UI
@@ -20,13 +19,12 @@ namespace UI
 
         [Header("OptionsScene")]
         [SerializeField] private string _optionsSceneName;
-        private bool _optionsActive = false;
+        private bool _optionsActive;
 
-        // Called with from the PlayerInput
-        public void ShowPauseMenu(InputAction.CallbackContext context)
+        private void Start()
         {
-            if (context.started)
-                ShowPauseMenu();
+            InputManager.pauseEvent.AddListener(ShowPauseMenu);
+            _optionsActive = false;
         }
 
         // Can also be called from PauseButton
@@ -38,27 +36,39 @@ namespace UI
                 SceneManager.UnloadSceneAsync(_optionsSceneName);
                 return;
             }
-
             // OptionsScene not loaded, usual pause function
-            Time.timeScale = (Time.timeScale == 1f) ? 0f : 1f;
 
-            if (_inputManager != null)
-                _inputManager.enabled = !_inputManager.enabled;
+            if (_pauseMenu.activeSelf)
+            {
+                Time.timeScale = 1f;
 
-            ResetUINavigation();
+                if (_inputManager != null)
+                    _inputManager.PauseInput(false);
 
-            _pauseMenu.SetActive(!_pauseMenu.activeSelf);
+                ResetUINavigation();
+
+                _pauseMenu.SetActive(false);
+            }
+            else
+            {
+                Time.timeScale = 0f;
+
+                if (_inputManager != null)
+                    _inputManager.PauseInput(true);
+
+                ResetUINavigation();
+
+                _pauseMenu.SetActive(true);
+            }
         }
 
         public void Restart()
         {
-            Time.timeScale = 1f;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         public void GoToMainMenu()
         {
-            Time.timeScale = 1f;
             SceneManager.LoadScene(0);
         }
 

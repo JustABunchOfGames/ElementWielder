@@ -11,12 +11,10 @@ namespace Core
     {
         public static AttackEvent attackEvent = new AttackEvent();
 
-        // Overwrite PlayerInput event because it doesn't work
-        public static OnControlChanged onControlChanged = new OnControlChanged();
+        public static PauseEvent pauseEvent = new PauseEvent();
+        private bool isPaused;
 
         private PlayerInputClass playerInputClass;
-
-        public static PlayerInput playerInputObject { get; private set; }
 
         private Dictionary<ElementType, bool> _attackHeld;
 
@@ -30,28 +28,11 @@ namespace Core
 
         private void Update()
         {
-            // Old Input Manager
-            /*
-            if (Input.GetButton("BasicAttack"))
-                attackEvent.Invoke(ElementType.Basic);
-
-            if (Input.GetButton("FireAttack"))
-                attackEvent.Invoke(ElementType.Fire);
-
-            if (Input.GetButton("WindAttack"))
-                attackEvent.Invoke(ElementType.Wind);
-
-            if (Input.GetButton("EarthAttack"))
-                attackEvent.Invoke(ElementType.Earth);
-
-            if (Input.GetButton("WaterAttack"))
-                attackEvent.Invoke(ElementType.Water);
-            */
+            if (isPaused)
+                return;
 
             Aim();
         }
-
-        
 
         private void Aim()
         {
@@ -95,7 +76,6 @@ namespace Core
         private void Awake()
         {
             playerInputClass = new PlayerInputClass();
-            playerInputObject = GetComponent<PlayerInput>();
 
             _attackHeld = new Dictionary<ElementType, bool>();
             _elementString = new Dictionary<string, ElementType>();
@@ -105,6 +85,9 @@ namespace Core
                 _elementString[element.ToString()] = element;
             }
 
+            PlayerInput playerInput = GetComponent<PlayerInput>();
+            
+            /*
             playerInputClass.Player.Basic.performed += StartAttack;
             playerInputClass.Player.Basic.canceled += StopAttack;
 
@@ -120,21 +103,65 @@ namespace Core
             playerInputClass.Player.Water.performed += StartAttack;
             playerInputClass.Player.Water.canceled += StopAttack;
 
+            playerInputClass.Player.TogglePause.performed += TogglePause;
+            */
+
+            // Rebinding don't apply on PlayerInputClass, so juste use PlayerInput
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Basic").performed += StartAttack;
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Basic").canceled += StopAttack;
+
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Fire").performed += StartAttack;
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Fire").canceled += StopAttack;
+
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Wind").performed += StartAttack;
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Wind").canceled += StopAttack;
+
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Earth").performed += StartAttack;
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Earth").canceled += StopAttack;
+
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Water").performed += StartAttack;
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Water").canceled += StopAttack;
+
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("TogglePause").performed += TogglePause;
+
             playerInputClass.Enable();
+
+            isPaused = false;
         }
 
-        private void OnEnable()
+        private void OnDestroy()
         {
-            playerInputClass.Enable();
+            if (KeepInputWhileLoading.playerInputObject == null)
+                return;
+
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Basic").performed -= StartAttack;
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Basic").canceled -= StopAttack;
+
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Fire").performed -= StartAttack;
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Fire").canceled -= StopAttack;
+
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Wind").performed -= StartAttack;
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Wind").canceled -= StopAttack;
+
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Earth").performed -= StartAttack;
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Earth").canceled -= StopAttack;
+
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Water").performed -= StartAttack;
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("Water").canceled -= StopAttack;
+
+            KeepInputWhileLoading.playerInputObject.actions.FindAction("TogglePause").performed -= TogglePause;
         }
 
-        private void OnDisable()
+        public void PauseInput(bool pause)
         {
-            playerInputClass.Disable();
+            isPaused = pause;
         }
 
         private void StartAttack(InputAction.CallbackContext context)
         {
+            if (isPaused)
+                return;
+
             // ElementType element = (ElementType)System.Enum.Parse(typeof(ElementType),context.action.name);
             ElementType element = _elementString[context.action.name];
 
@@ -159,13 +186,13 @@ namespace Core
             _attackHeld[element] = false;
         }
 
-        public void ControlChanged(PlayerInput input)
+        private void TogglePause(InputAction.CallbackContext context)
         {
-            onControlChanged.Invoke(input);
+            pauseEvent.Invoke();
         }
     }
 
     public class AttackEvent : UnityEvent<ElementType> { }
 
-    public class OnControlChanged : UnityEvent<PlayerInput> { }
+    public class PauseEvent : UnityEvent { }
 }

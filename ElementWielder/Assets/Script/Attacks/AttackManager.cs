@@ -55,7 +55,7 @@ namespace Attacks
             AttackData data = attacks[element];
 
             // Creating attack
-            GameObject attack = Instantiate(data.attackPrefab, _castPoint.transform.position, _castPoint.transform.rotation);
+            AttackShape attack = Instantiate(data.attackPrefab, _castPoint.transform.position, _castPoint.transform.rotation);
             Attack.CreateAttack(attack, data.attackElement, data.attackDamage);
         }
 

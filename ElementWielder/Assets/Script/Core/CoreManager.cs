@@ -17,6 +17,9 @@ namespace Core
 
             // Reset stage number
             _stageManager.Reset();
+
+            // When reloading from a pause state
+            Time.timeScale = 1.0f;
         }
     }
 }

@@ -28,7 +28,8 @@ namespace UI
         {
             Time.timeScale = 0f;
 
-            _inputManager.enabled = false;
+            if (_inputManager != null)
+                _inputManager.PauseInput(true);
 
             _stageClearedScreen.SetActive(true);
         }
@@ -38,7 +39,7 @@ namespace UI
             Time.timeScale = 0f;
 
             if (_inputManager != null)
-                _inputManager.enabled = !_inputManager.enabled;
+                _inputManager.PauseInput(true);
 
             _stageFailedScreen.SetActive(true);
         }
@@ -54,7 +55,7 @@ namespace UI
         {
             Time.timeScale = 1f;
 
-            _inputManager.enabled = true;
+            _inputManager.PauseInput(false);
 
             _stageClearedScreen.SetActive(false);
         }

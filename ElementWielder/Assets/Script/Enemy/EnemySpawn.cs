@@ -41,7 +41,7 @@ namespace Enemy {
             int stage = _stageManager.stage;
 
             // Calculate number of enemy to spawn + setting it in the stage manager
-            int numberOfEnemyToSpawn = _baseNumberOfEnemyToSpawn + ((stage - 1) * ((int)stage / 10));
+            int numberOfEnemyToSpawn = _baseNumberOfEnemyToSpawn + ((stage - 1) * ( 1 + (stage / 10)));
             _stageManager.SetNumberOfEnemyToKill(numberOfEnemyToSpawn);
 
             // Calculate the timer between each spawn
@@ -50,7 +50,7 @@ namespace Enemy {
 
             // Calculate bonus hp & speed for enemy
             int bonusHp = stage * (1 + (int)(stage / 10));
-            float bonusSpeed = 1f + (stage * 0.005f);
+            float bonusSpeed = 1f + (stage * 0.002f);
 
             // Waiting a bit before starting stage spawn
             yield return new WaitForSeconds(1f);

@@ -16,13 +16,13 @@ MonoBehaviour:
   _upgradeName: Close Range Shockwave
   _upgrades:
   - _attackUpgrades:
-    - _element: 0
+    - _element: 3
       _atkAddBonus: 5
       _atkPercentMultiplier: 0
     _prefabUpgrade:
-      _attackPrefab: {fileID: 3322166885770153169, guid: b5ac657ef33cd9c408f8dbbe459052de, type: 3}
+      _attackPrefab: {fileID: 3322166885770153170, guid: b5ac657ef33cd9c408f8dbbe459052de, type: 3}
     _cooldownUpgrades:
-    - _element: 0
+    - _element: 3
       _cooldownPercentBonus: -10
     _manaCostUpgrades:
     - _element: 0
@@ -33,7 +33,7 @@ MonoBehaviour:
       _maxHealthPercentMultiplier: 0
     _manaUpgrades: []
   - _attackUpgrades:
-    - _element: 0
+    - _element: 3
       _atkAddBonus: 0
       _atkPercentMultiplier: 20
     _prefabUpgrade:
@@ -45,7 +45,7 @@ MonoBehaviour:
       _maxHealthPercentMultiplier: 0
     _manaUpgrades: []
   - _attackUpgrades:
-    - _element: 0
+    - _element: 3
       _atkAddBonus: 0
       _atkPercentMultiplier: 30
     _prefabUpgrade:
@@ -57,13 +57,13 @@ MonoBehaviour:
       _maxHealthPercentMultiplier: 0
     _manaUpgrades: []
   - _attackUpgrades:
-    - _element: 0
+    - _element: 3
       _atkAddBonus: 10
       _atkPercentMultiplier: 0
     _prefabUpgrade:
       _attackPrefab: {fileID: 0}
     _cooldownUpgrades:
-    - _element: 0
+    - _element: 3
       _cooldownPercentBonus: -20
     _manaCostUpgrades:
     - _element: 0
@@ -74,13 +74,13 @@ MonoBehaviour:
       _maxHealthPercentMultiplier: 0
     _manaUpgrades: []
   - _attackUpgrades:
-    - _element: 0
+    - _element: 3
       _atkAddBonus: 0
       _atkPercentMultiplier: 50
     _prefabUpgrade:
       _attackPrefab: {fileID: 0}
     _cooldownUpgrades:
-    - _element: 0
+    - _element: 3
       _cooldownPercentBonus: -30
     _manaCostUpgrades:
     - _element: 0

@@ -6,6 +6,8 @@ namespace Core
     [CreateAssetMenu(menuName ="Core/StageManager")]
     public class StageManagerScriptable : ScriptableObject
     {
+        public bool isTutorial;
+
         public int stage { get; private set; } = 1;
 
         private int _numberOfEnemyToKill;

@@ -12,7 +12,7 @@ namespace Attacks
         private float _attackRaw;
         private float _attackPercentMultiplier;
 
-        [field: SerializeField] public GameObject attackPrefab { get; private set; }
+        [field: SerializeField] public AttackShape attackPrefab { get; private set; }
 
         [field: SerializeField] public float attackCooldown { get; private set; }
 
@@ -51,7 +51,7 @@ namespace Attacks
             attackManaCost = (int)(_manaCostRaw * (_attackPercentMultiplier / 100f));
         }
 
-        public void SetPrefab(GameObject prefab)
+        public void SetPrefab(AttackShape prefab)
         {
             attackPrefab = prefab;
         }

@@ -1,12 +1,26 @@
 using Core;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Attacks
 {
     public class AttackShape : MonoBehaviour
     {
-        [SerializeField] private float _attackTimer;
+        [Serializable]
+        public struct ElementEffect
+        {
+            public ElementType element;
+            public GameObject effect;
+        }
+
+        [Header("Cast effect")]
+        [SerializeField] protected List<ElementEffect> _castEffects;
+        protected ElementType _element;
+
+        [Header("Lifetime of attack")]
+        [SerializeField] private float _lifetime;
 
         protected void Awake()
         {
@@ -25,9 +39,22 @@ namespace Attacks
 
         protected IEnumerator DestroyAfterTime()
         {
-            yield return new WaitForSeconds(_attackTimer);
+            yield return new WaitForSeconds(_lifetime);
 
             Destroy(gameObject);
+        }
+
+        public virtual void AddEffects(ElementType element)
+        {
+            _element = element;
+
+            foreach (ElementEffect castEffect in _castEffects)
+            {
+                if (castEffect.element == element)
+                {
+                    Instantiate(castEffect.effect, transform);
+                }
+            }
         }
     }
 }

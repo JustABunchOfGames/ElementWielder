@@ -16,17 +16,27 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f7fa3ec035528214180272fad2fd8b07, type: 2}
   - {fileID: 11400000, guid: 3771fb4bbf832ed46aa5ad044929fe04, type: 2}
   - {fileID: 11400000, guid: e25e5a3aa2b95bb46a060e6947bc8849, type: 2}
+  - {fileID: 11400000, guid: 29dc87b6a960aba48884dafea9aeb125, type: 2}
+  - {fileID: 11400000, guid: 61d3ff56b2204cd41900bc4f65395520, type: 2}
   <elementalUpgradeList>k__BackingField:
   - type: 0
     upgradeList:
-    - {fileID: 11400000, guid: 94b02bf7a9034fe4e899f7fd5e8292a4, type: 2}
+    - {fileID: 11400000, guid: cc608880ef59afa4daa0b83a787ab649, type: 2}
     - {fileID: 11400000, guid: 6a583e5a52802864cb07b466e5691404, type: 2}
+    - {fileID: 11400000, guid: 97617700aa6946142b380368215ed5ac, type: 2}
   - type: 1
-    upgradeList: []
+    upgradeList:
+    - {fileID: 11400000, guid: 8d4cfc0f14264c44581280cbc10a3221, type: 2}
+    - {fileID: 11400000, guid: 5251424bfa290f14fa3bf84fcf9d946f, type: 2}
   - type: 2
-    upgradeList: []
+    upgradeList:
+    - {fileID: 11400000, guid: 1089679bc1bd1104fac7dd4c3cfdecd7, type: 2}
+    - {fileID: 11400000, guid: ee1d1c147236fe74096d6cf6bd9f8987, type: 2}
+    - {fileID: 11400000, guid: ba624fab77757e244bad38fd5256eee7, type: 2}
   - type: 3
-    upgradeList: []
+    upgradeList:
+    - {fileID: 11400000, guid: 666fb0db82aaf9d4e8052ef09d9ffa9d, type: 2}
+    - {fileID: 11400000, guid: f09ef89d30270404c9f4594966dcc04d, type: 2}
   - type: 4
     upgradeList:
     - {fileID: 11400000, guid: 37c18f5adfd293047ae0a2d7e8e10cc2, type: 2}

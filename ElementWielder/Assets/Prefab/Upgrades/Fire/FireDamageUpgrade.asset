@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a02afef1b9005c4e92c699010b5db79, type: 3}
+  m_Name: FireDamageUpgrade
+  m_EditorClassIdentifier: 
+  type: 0
+  _upgradeName: Fire Damage
+  _upgrades:
+  - _attackUpgrades:
+    - _element: 0
+      _atkAddBonus: 10
+      _atkPercentMultiplier: 10
+    _prefabUpgrade:
+      _attackPrefab: {fileID: 0}
+    _cooldownUpgrades: []
+    _manaCostUpgrades: []
+    _healthUpgrade:
+      _maxHealthBonus: 0
+      _maxHealthPercentMultiplier: -10
+    _manaUpgrades: []
+  - _attackUpgrades:
+    - _element: 0
+      _atkAddBonus: 0
+      _atkPercentMultiplier: 30
+    _prefabUpgrade:
+      _attackPrefab: {fileID: 0}
+    _cooldownUpgrades: []
+    _manaCostUpgrades:
+    - _element: 0
+      _manaCostBonus: 0
+      _manaCostPercentMultiplier: 20
+    _healthUpgrade:
+      _maxHealthBonus: 0
+      _maxHealthPercentMultiplier: -10
+    _manaUpgrades:
+    - _element: 0
+      _maxManaBonus: 20
+      _maxManaPercentMultiplier: 0
+      _currentManaPercentMultiplier: 0

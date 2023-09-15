@@ -32,13 +32,13 @@ namespace UI
 
         private void Awake()
         {
-            _inputAction = InputManager.playerInputObject.actions.FindAction(_actionName);
+            _inputAction = KeepInputWhileLoading.playerInputObject.actions.FindAction(_actionName);
 
             _actionText.text = _actionName;
             UpdateBindingDisplayUI();
             ShowAction(true);
 
-            InputManager.onControlChanged.AddListener(UpdateBindingOnDeviceChange);
+            KeepInputWhileLoading.onControlChanged.AddListener(UpdateBindingOnDeviceChange);
         }
 
         private void ShowAction(bool show)
@@ -53,13 +53,14 @@ namespace UI
             StartRebindProcess();
         }
 
-        void StartRebindProcess()
+        private void StartRebindProcess()
         {
 
             ShowAction(false);
 
+            _inputAction.Disable();
 
-            rebindOperation = _inputAction.PerformInteractiveRebinding()
+            rebindOperation = _inputAction.PerformInteractiveRebinding(0)
                 .WithControlsExcluding("<Mouse>/position")
                 .WithControlsExcluding("<Mouse>/delta")
                 .WithControlsExcluding("<Gamepad>/Start")
@@ -70,8 +71,10 @@ namespace UI
             rebindOperation.Start();
         }
 
-        void RebindCompleted()
+        private void RebindCompleted()
         {
+            _inputAction.Enable();
+
             rebindOperation.Dispose();
             rebindOperation = null;
 
@@ -88,7 +91,6 @@ namespace UI
 
         private void UpdateBindingOnDeviceChange(PlayerInput input)
         {
-            Debug.Log("Device Changed");
             _inputAction = input.actions.FindAction(_actionName);
             UpdateBindingDisplayUI();
         }
@@ -100,7 +102,7 @@ namespace UI
                 _inputAction.bindings[controlBindingIndex].effectivePath,
                 InputControlPath.HumanReadableStringOptions.OmitDevice);
 
-            Sprite currentDisplayIcon = deviceDisplaySettings.GetDeviceBindingIcon(InputManager.playerInputObject, currentBindingInput);
+            Sprite currentDisplayIcon = deviceDisplaySettings.GetDeviceBindingIcon(KeepInputWhileLoading.playerInputObject, currentBindingInput);
 
             if (currentDisplayIcon != null)
             {

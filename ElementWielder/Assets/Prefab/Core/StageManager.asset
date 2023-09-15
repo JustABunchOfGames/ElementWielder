@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3175bcb66d30ca4ab8b040a4aa2638d, type: 3}
   m_Name: StageManager
   m_EditorClassIdentifier: 
+  isTutorial: 0
