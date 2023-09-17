@@ -8,6 +8,17 @@ namespace Upgrades
     [Serializable]
     public class Upgrade
     {
+        public void CopyUpgrade(Upgrade upgrade)
+        {
+            _upgradeName = upgrade._upgradeName;
+            _attackUpgrades = upgrade._attackUpgrades;
+            _prefabUpgrade = upgrade._prefabUpgrade;
+            _cooldownUpgrades = upgrade._cooldownUpgrades;
+            _manaCostUpgrades = upgrade._manaCostUpgrades;
+            _healthUpgrade = upgrade._healthUpgrade;
+            _manaUpgrades = upgrade._manaUpgrades;
+        }
+
         // Set element in all upgrade
         public void SetElement(ElementType element)
         {
@@ -16,7 +27,17 @@ namespace Upgrades
 
             foreach(CooldownUpgrade cooldownUpgrade in _cooldownUpgrades)
                 cooldownUpgrade.element = element;
+
+            foreach(ManaCostUpgrade manaCostUpgrade in _manaCostUpgrades)
+                manaCostUpgrade.element = element;
+
+            foreach(ManaUpgrade manaUpgrade in _manaUpgrades)
+                manaUpgrade.element = element;
         }
+
+        [Header("Name for UI")]
+        [SerializeField] private string _upgradeName;
+        public string upgradeName { get { return _upgradeName; } private set { } }
 
         /*
          * Attack Upgrade

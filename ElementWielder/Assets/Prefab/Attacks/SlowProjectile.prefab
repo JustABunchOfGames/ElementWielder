@@ -97731,15 +97731,15 @@ MonoBehaviour:
   _speed: 10
   _onHitEffects:
   - element: 4
-    effect: {fileID: 3361184531992340192}
+    effect: {fileID: 18940053580055863, guid: 9de4eb3f74cd0bf49acb2af79f942b34, type: 3}
   - element: 0
-    effect: {fileID: 3437064861587761088}
+    effect: {fileID: 2350163606258508023, guid: a3c75c32fdb9e44479aa09203c11e9b3, type: 3}
   - element: 1
-    effect: {fileID: 1688864076488445208}
+    effect: {fileID: 7038730955548082489, guid: 72656835275a7e646b592025792eb53b, type: 3}
   - element: 2
-    effect: {fileID: 794758224543997416}
+    effect: {fileID: 3023851308176399723, guid: 9e0e1f36b60586646932b0ec5f23fe07, type: 3}
   - element: 3
-    effect: {fileID: 47936102594489286}
+    effect: {fileID: 2290517821812510740, guid: 9947d8880fd189b408cc1e7dc25afca0, type: 3}
 --- !u!1 &8988537756637001024
 GameObject:
   m_ObjectHideFlags: 0

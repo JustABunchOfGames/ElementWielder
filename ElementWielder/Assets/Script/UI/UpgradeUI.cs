@@ -12,38 +12,37 @@ namespace UI
 
         [SerializeField] private UpgradeManager _upgradeManager;
 
-        private Dictionary<IndexedUpgrade,(ElementType, int)> _proposedUpgrade;
+        private Dictionary<Upgrade, (ElementType, int)> _proposedUpgrade;
 
         private void OnEnable()
         {
-            _proposedUpgrade = new Dictionary<IndexedUpgrade, (ElementType, int)>();
+            _proposedUpgrade = new Dictionary<Upgrade, (ElementType, int)>();
 
-            foreach(UpgradeCard card in _upgradeCardList)
+            foreach (UpgradeCard card in _upgradeCardList)
             {
                 ElementType element;
                 int index;
                 (element, index) = _upgradeManager.GetRandomUpgradeIndex();
 
-                IndexedUpgrade indexedUpgrade = _upgradeManager.GetUpgrade(element, index);
+                Upgrade upgrade = _upgradeManager.GetUpgrade(element, index);
 
-                while (_proposedUpgrade.ContainsKey(indexedUpgrade))
+                while (_proposedUpgrade.ContainsValue((element, index)))
                 {
                     (element, index) = _upgradeManager.GetRandomUpgradeIndex();
 
-                    indexedUpgrade = _upgradeManager.GetUpgrade(element, index);
-                }
+                    upgrade = _upgradeManager.GetUpgrade(element, index);
+                }              
 
-                card.SetCard(element, indexedUpgrade);
+                card.SetCard(element, upgrade);
 
-                _proposedUpgrade.Add(indexedUpgrade,(element, index));
+                _proposedUpgrade.Add(upgrade, (element, index));
             }
         }
-
-        public void ChooseAnUpgrade(IndexedUpgrade indexedUpgrade)
+        public void ChooseAnUpgrade(Upgrade upgrade)
         {
             ElementType element;
             int index;
-            (element, index) = _proposedUpgrade[indexedUpgrade];
+            (element, index) = _proposedUpgrade[upgrade];
 
             _upgradeManager.ApplyUpgrade(element, index);
         }

@@ -15,7 +15,8 @@ MonoBehaviour:
   type: 2
   _upgradeName: Earth Mana
   _upgrades:
-  - _attackUpgrades: []
+  - _upgradeName: Earth Mana
+    _attackUpgrades: []
     _prefabUpgrade:
       _attackPrefab: {fileID: 0}
     _cooldownUpgrades: []
@@ -28,7 +29,8 @@ MonoBehaviour:
       _maxManaBonus: 10
       _maxManaPercentMultiplier: 0
       _currentManaPercentMultiplier: 0
-  - _attackUpgrades: []
+  - _upgradeName: Earth Mana
+    _attackUpgrades: []
     _prefabUpgrade:
       _attackPrefab: {fileID: 0}
     _cooldownUpgrades: []
@@ -41,7 +43,8 @@ MonoBehaviour:
       _maxManaBonus: 20
       _maxManaPercentMultiplier: 0
       _currentManaPercentMultiplier: 0
-  - _attackUpgrades: []
+  - _upgradeName: Earth Mana
+    _attackUpgrades: []
     _prefabUpgrade:
       _attackPrefab: {fileID: 0}
     _cooldownUpgrades: []

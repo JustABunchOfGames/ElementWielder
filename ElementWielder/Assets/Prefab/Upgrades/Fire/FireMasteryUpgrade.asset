@@ -15,7 +15,8 @@ MonoBehaviour:
   type: 0
   _upgradeName: Fire Mastery
   _upgrades:
-  - _attackUpgrades:
+  - _upgradeName: Fire Mastery
+    _attackUpgrades:
     - _element: 0
       _atkAddBonus: 0
       _atkPercentMultiplier: 20
@@ -30,7 +31,8 @@ MonoBehaviour:
       _maxHealthBonus: 0
       _maxHealthPercentMultiplier: 0
     _manaUpgrades: []
-  - _attackUpgrades:
+  - _upgradeName: Fire Mastery
+    _attackUpgrades:
     - _element: 3
       _atkAddBonus: 0
       _atkPercentMultiplier: -20
@@ -42,7 +44,8 @@ MonoBehaviour:
       _maxHealthBonus: 0
       _maxHealthPercentMultiplier: -10
     _manaUpgrades: []
-  - _attackUpgrades:
+  - _upgradeName: Fire Mastery
+    _attackUpgrades:
     - _element: 0
       _atkAddBonus: 0
       _atkPercentMultiplier: 50

@@ -15,7 +15,8 @@ MonoBehaviour:
   type: 4
   _upgradeName: Glass Cannon
   _upgrades:
-  - _attackUpgrades:
+  - _upgradeName: Glass Cannon
+    _attackUpgrades:
     - _element: 0
       _atkAddBonus: 0
       _atkPercentMultiplier: 20
@@ -39,7 +40,8 @@ MonoBehaviour:
       _maxHealthBonus: 0
       _maxHealthPercentMultiplier: -20
     _manaUpgrades: []
-  - _attackUpgrades:
+  - _upgradeName: Glass Cannon
+    _attackUpgrades:
     - _element: 0
       _atkAddBonus: 0
       _atkPercentMultiplier: 20

@@ -15,7 +15,8 @@ MonoBehaviour:
   type: 3
   _upgradeName: Water Fast Cast
   _upgrades:
-  - _attackUpgrades: []
+  - _upgradeName: Water Fast Cast
+    _attackUpgrades: []
     _prefabUpgrade:
       _attackPrefab: {fileID: 0}
     _cooldownUpgrades:
@@ -26,7 +27,8 @@ MonoBehaviour:
       _maxHealthBonus: 0
       _maxHealthPercentMultiplier: 0
     _manaUpgrades: []
-  - _attackUpgrades: []
+  - _upgradeName: Water Fast Cast
+    _attackUpgrades: []
     _prefabUpgrade:
       _attackPrefab: {fileID: 0}
     _cooldownUpgrades:
@@ -37,7 +39,8 @@ MonoBehaviour:
       _maxHealthBonus: 0
       _maxHealthPercentMultiplier: 0
     _manaUpgrades: []
-  - _attackUpgrades: []
+  - _upgradeName: Water Fast Cast
+    _attackUpgrades: []
     _prefabUpgrade:
       _attackPrefab: {fileID: 0}
     _cooldownUpgrades:

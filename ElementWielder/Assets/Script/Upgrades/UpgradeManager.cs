@@ -59,15 +59,15 @@ namespace Upgrades
             return (element, random);
         }
 
-        public IndexedUpgrade GetUpgrade(ElementType element, int index)
+        public Upgrade GetUpgrade(ElementType element, int index)
         {
-            // If prefab, upgrade element should follow the series element
-            if (_possibleUpgrade[element][index].GetLatestUpgrade().isPrefabUpgrade)
-            {
-                _possibleUpgrade[element][index].upgradeSeries.PrefabElement(element);
-            }
+            Upgrade upgrade = new Upgrade();
+            upgrade.CopyUpgrade(_possibleUpgrade[element][index].GetLatestUpgrade());
 
-            return _possibleUpgrade[element][index];
+            if (_possibleUpgrade[element][index].GetFirstUpgrade().isPrefabUpgrade)
+                upgrade.SetElement(element);
+
+            return upgrade;
         }
 
         public void ApplyUpgrade(ElementType element, int index)
@@ -77,7 +77,13 @@ namespace Upgrades
             IncrementPossibleUpgrade(element, index);
 
             // Bonuses actualized, apply it :
-            Upgrade upgrade = newUpgrade.GetLatestUpgrade();
+            Upgrade upgrade = new Upgrade();
+            upgrade.CopyUpgrade(newUpgrade.GetLatestUpgrade());
+
+            if (newUpgrade.GetFirstUpgrade().isPrefabUpgrade)
+                upgrade.SetElement(element);
+
+
 
             // Change prefab of attack
             if (upgrade.isPrefabUpgrade)

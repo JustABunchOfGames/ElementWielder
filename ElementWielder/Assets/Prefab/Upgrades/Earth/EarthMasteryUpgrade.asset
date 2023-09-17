@@ -15,7 +15,8 @@ MonoBehaviour:
   type: 2
   _upgradeName: Earth Mastery
   _upgrades:
-  - _attackUpgrades:
+  - _upgradeName: Earth Mastery
+    _attackUpgrades:
     - _element: 2
       _atkAddBonus: 0
       _atkPercentMultiplier: 30
@@ -30,7 +31,8 @@ MonoBehaviour:
       _maxHealthBonus: 0
       _maxHealthPercentMultiplier: 0
     _manaUpgrades: []
-  - _attackUpgrades:
+  - _upgradeName: Earth Mastery
+    _attackUpgrades:
     - _element: 2
       _atkAddBonus: 0
       _atkPercentMultiplier: 50
@@ -45,7 +47,8 @@ MonoBehaviour:
       _maxHealthBonus: 0
       _maxHealthPercentMultiplier: 0
     _manaUpgrades: []
-  - _attackUpgrades:
+  - _upgradeName: Earth Mastery
+    _attackUpgrades:
     - _element: 2
       _atkAddBonus: 0
       _atkPercentMultiplier: 50

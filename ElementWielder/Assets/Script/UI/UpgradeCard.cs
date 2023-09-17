@@ -15,22 +15,21 @@ namespace UI
 
         [SerializeField] private ElementTypeScriptable _elementTypeScriptable;
 
-        private IndexedUpgrade _indexedUpgrade;
+        // private IndexedUpgrade _indexedUpgrade;
+        private Upgrade _upgrade;
         [SerializeField] private UpgradeUI _upgradeUI;
 
-        public void SetCard(ElementType element, IndexedUpgrade indexedUpgrade)
+        public void SetCard(ElementType element, Upgrade upgrade)
         {
-            _name.text = indexedUpgrade.upgradeSeries.upgradeName;
+            _name.text = upgrade.upgradeName;
 
             _element.text = element.ToString();
 
             _background.material = _elementTypeScriptable.GetMaterialByElement(element);
 
-            _indexedUpgrade = indexedUpgrade;
+            _upgrade = upgrade;
 
             _description.text = "";
-
-            Upgrade upgrade = indexedUpgrade.GetLatestUpgrade();
 
             // Prefab
             if (upgrade.isPrefabUpgrade)
@@ -49,8 +48,8 @@ namespace UI
 
                     if (attackUpgrade.atkPercentMultiplier != 0)
                         _description.text += Environment.NewLine + attackUpgrade.element.ToString() +
-                            " atk " + (attackUpgrade.atkPercentMultiplier > 0? "+" : "") + attackUpgrade.atkPercentMultiplier + "%";
-                    
+                            " atk " + (attackUpgrade.atkPercentMultiplier > 0 ? "+" : "") + attackUpgrade.atkPercentMultiplier + "%";
+
                 }
             }
 
@@ -67,7 +66,7 @@ namespace UI
             // ManaCost
             if (upgrade.isManaCostUpgrade)
             {
-                foreach(ManaCostUpgrade manaCostUpgrade in upgrade.manaCostUpgrades)
+                foreach (ManaCostUpgrade manaCostUpgrade in upgrade.manaCostUpgrades)
                 {
                     if (manaCostUpgrade.manaCostBonus != 0)
                         _description.text += Environment.NewLine + manaCostUpgrade.element.ToString() +
@@ -113,7 +112,7 @@ namespace UI
 
         public void ChooseUpgrade()
         {
-            _upgradeUI.ChooseAnUpgrade(_indexedUpgrade);
+            _upgradeUI.ChooseAnUpgrade(_upgrade);
         }
     }
 }

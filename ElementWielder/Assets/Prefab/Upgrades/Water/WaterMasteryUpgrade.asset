@@ -15,7 +15,8 @@ MonoBehaviour:
   type: 3
   _upgradeName: Water Mastery
   _upgrades:
-  - _attackUpgrades: []
+  - _upgradeName: Water Mastery
+    _attackUpgrades: []
     _prefabUpgrade:
       _attackPrefab: {fileID: 0}
     _cooldownUpgrades: []
@@ -27,7 +28,8 @@ MonoBehaviour:
       _maxHealthBonus: 10
       _maxHealthPercentMultiplier: 20
     _manaUpgrades: []
-  - _attackUpgrades: []
+  - _upgradeName: Water Mastery
+    _attackUpgrades: []
     _prefabUpgrade:
       _attackPrefab: {fileID: 0}
     _cooldownUpgrades: []
@@ -40,7 +42,8 @@ MonoBehaviour:
       _maxManaBonus: 0
       _maxManaPercentMultiplier: 30
       _currentManaPercentMultiplier: 0
-  - _attackUpgrades:
+  - _upgradeName: Water Mastery
+    _attackUpgrades:
     - _element: 3
       _atkAddBonus: 0
       _atkPercentMultiplier: 20

@@ -15,7 +15,8 @@ MonoBehaviour:
   type: 0
   _upgradeName: Wind Mastery
   _upgrades:
-  - _attackUpgrades: []
+  - _upgradeName: Wind Mastery
+    _attackUpgrades: []
     _prefabUpgrade:
       _attackPrefab: {fileID: 0}
     _cooldownUpgrades:
@@ -33,7 +34,8 @@ MonoBehaviour:
       _maxManaBonus: 10
       _maxManaPercentMultiplier: 0
       _currentManaPercentMultiplier: 0
-  - _attackUpgrades: []
+  - _upgradeName: Wind Mastery
+    _attackUpgrades: []
     _prefabUpgrade:
       _attackPrefab: {fileID: 0}
     _cooldownUpgrades:

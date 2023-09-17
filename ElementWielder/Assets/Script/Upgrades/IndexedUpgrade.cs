@@ -25,5 +25,10 @@ namespace Upgrades
         {
             return upgradeSeries.GetUpgrade(index);
         }
+
+        public Upgrade GetFirstUpgrade()
+        {
+            return upgradeSeries.GetUpgrade(0);
+        }
     }
 }

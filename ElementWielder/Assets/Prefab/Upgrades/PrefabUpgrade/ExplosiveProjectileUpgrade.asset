@@ -15,36 +15,39 @@ MonoBehaviour:
   type: 0
   _upgradeName: Explosive Projectile
   _upgrades:
-  - _attackUpgrades:
-    - _element: 1
+  - _upgradeName: Explosive Projectile
+    _attackUpgrades:
+    - _element: 4
       _atkAddBonus: 5
       _atkPercentMultiplier: 0
     _prefabUpgrade:
       _attackPrefab: {fileID: 2750187163165372474, guid: 03d4004f1687a73448947a8d49a17a49, type: 3}
     _cooldownUpgrades: []
     _manaCostUpgrades:
-    - _element: 0
-      _manaCostBonus: 5
-      _manaCostPercentMultiplier: 0
+    - _element: 4
+      _manaCostBonus: 0
+      _manaCostPercentMultiplier: 30
     _healthUpgrade:
       _maxHealthBonus: 0
       _maxHealthPercentMultiplier: 0
     _manaUpgrades: []
-  - _attackUpgrades:
-    - _element: 1
+  - _upgradeName: Explosive Projectile
+    _attackUpgrades:
+    - _element: 4
       _atkAddBonus: 0
       _atkPercentMultiplier: 50
     _prefabUpgrade:
       _attackPrefab: {fileID: 0}
     _cooldownUpgrades:
-    - _element: 1
+    - _element: 4
       _cooldownPercentBonus: 30
     _manaCostUpgrades: []
     _healthUpgrade:
       _maxHealthBonus: 0
       _maxHealthPercentMultiplier: 0
     _manaUpgrades: []
-  - _attackUpgrades:
+  - _upgradeName: Explosive Projectile
+    _attackUpgrades:
     - _element: 1
       _atkAddBonus: 10
       _atkPercentMultiplier: 0
@@ -59,7 +62,8 @@ MonoBehaviour:
       _maxHealthBonus: 0
       _maxHealthPercentMultiplier: 0
     _manaUpgrades: []
-  - _attackUpgrades:
+  - _upgradeName: Explosive Projectile
+    _attackUpgrades:
     - _element: 1
       _atkAddBonus: 0
       _atkPercentMultiplier: 20
@@ -71,7 +75,8 @@ MonoBehaviour:
       _maxHealthBonus: 0
       _maxHealthPercentMultiplier: 0
     _manaUpgrades: []
-  - _attackUpgrades:
+  - _upgradeName: Explosive Projectile
+    _attackUpgrades:
     - _element: 1
       _atkAddBonus: 0
       _atkPercentMultiplier: 50

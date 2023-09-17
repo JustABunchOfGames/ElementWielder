@@ -15,22 +15,24 @@ MonoBehaviour:
   type: 0
   _upgradeName: Penetrating Projectile
   _upgrades:
-  - _attackUpgrades:
-    - _element: 1
+  - _upgradeName: Penetrating Projectile
+    _attackUpgrades:
+    - _element: 4
       _atkAddBonus: 2
       _atkPercentMultiplier: 0
     _prefabUpgrade:
       _attackPrefab: {fileID: -272426039213304255, guid: 45fa435d00210ec45be87b0f6caf6af0, type: 3}
     _cooldownUpgrades: []
     _manaCostUpgrades:
-    - _element: 0
+    - _element: 4
       _manaCostBonus: 0
       _manaCostPercentMultiplier: 30
     _healthUpgrade:
       _maxHealthBonus: 0
       _maxHealthPercentMultiplier: 0
     _manaUpgrades: []
-  - _attackUpgrades:
+  - _upgradeName: Penetrating Projectile
+    _attackUpgrades:
     - _element: 1
       _atkAddBonus: 0
       _atkPercentMultiplier: 20
@@ -42,18 +44,20 @@ MonoBehaviour:
       _maxHealthBonus: 0
       _maxHealthPercentMultiplier: 0
     _manaUpgrades: []
-  - _attackUpgrades: []
+  - _upgradeName: Penetrating Projectile
+    _attackUpgrades: []
     _prefabUpgrade:
       _attackPrefab: {fileID: 0}
     _cooldownUpgrades:
-    - _element: 0
+    - _element: 3
       _cooldownPercentBonus: -20
     _manaCostUpgrades: []
     _healthUpgrade:
       _maxHealthBonus: 0
       _maxHealthPercentMultiplier: 0
     _manaUpgrades: []
-  - _attackUpgrades:
+  - _upgradeName: Penetrating Projectile
+    _attackUpgrades:
     - _element: 1
       _atkAddBonus: 0
       _atkPercentMultiplier: 20
@@ -65,7 +69,8 @@ MonoBehaviour:
       _maxHealthBonus: 0
       _maxHealthPercentMultiplier: 0
     _manaUpgrades: []
-  - _attackUpgrades:
+  - _upgradeName: Penetrating Projectile
+    _attackUpgrades:
     - _element: 1
       _atkAddBonus: 0
       _atkPercentMultiplier: 30

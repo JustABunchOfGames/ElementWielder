@@ -31,7 +31,7 @@ namespace Attacks
         {
             IDamageable target = collision.GetComponent<IDamageable>();
 
-            if (target != null)
+            if (target != null && collision.tag != "Player")
             {
                 GetComponent<Attack>().DoDamage(target);
             }
